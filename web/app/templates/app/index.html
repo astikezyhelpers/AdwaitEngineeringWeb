@@ -72,7 +72,7 @@
                     <div class="rd-navbar-nav-wrap" id="rd-navbar-nav-wrap-1">
                       <!-- RD Navbar Nav-->
                       <ul class="rd-navbar-nav">
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'home' %}">Home</a>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About us</a>
                         </li>
@@ -100,7 +100,7 @@
             <section class="section swiper-container swiper-slider swiper-slider-minimal" data-loop="true" data-slide-effect="fade" data-autoplay="4759" data-simulate-touch="true">
                 <div class="swiper-wrapper">
                     {% for category in categories %}
-                <div class="swiper-slide swiper-slide_video" data-slide-bg="{{category.image.url}}">
+                <div class="swiper-slide swiper-slide_video" data-slide-bg="{{category.banner_image.url}}">
                     <div class="container">
                     <div class="jumbotron-classic-content">
                         <div class="wow-outer">

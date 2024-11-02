@@ -6,6 +6,7 @@ from django.core.files.base import ContentFile
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     image = models.ImageField(upload_to='category_images/')
+    banner_image = models.ImageField(upload_to='category_banners/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Open the image using Pillow
@@ -19,6 +20,14 @@ class Category(models.Model):
             img_io = BytesIO()
             img.save(img_io, format=img.format if img.format else 'PNG')
             self.image.save(self.image.name, ContentFile(img_io.getvalue()), save=False)
+
+        if self.banner_image:
+            banner_img = Image.open(self.banner_image)
+            if banner_img.size != (1920, 520):
+                banner_img = banner_img.resize((1920, 520), Image.LANCZOS)
+                banner_img_io = BytesIO()
+                banner_img.save(banner_img_io, format=banner_img.format if banner_img.format else 'PNG')
+                self.banner_image.save(self.banner_image.name, ContentFile(banner_img_io.getvalue()), save=False)
 
         super(Category, self).save(*args, **kwargs)
 
