@@ -1,5 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product
+from django.core.mail import send_mail
+from django.contrib import messages
+from .forms import ContactForm
+from django.conf import settings
 
 # 1. View for Category List Page
 def category_list(request):
@@ -29,4 +33,27 @@ def about_view(request):
 
 def contact_view(request):
     categories = Category.objects.all()
-    return render(request, 'app/contact.html', {'categories':categories})
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Extract form data
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            message = form.cleaned_data['message']
+            
+            # You can add logic to save data to the database or send an email
+            # Here we are sending an email as an example
+            subject = f"Contact Form Submission from {first_name} {last_name}"
+            email_message = f"Name: {first_name} {last_name}\nEmail: {email}\nPhone: {phone}\nMessage:\n{message}"
+            send_mail(subject, email_message, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_EMAIL])
+            
+            messages.success(request, "Your have contacted successfully. You will get a call soon.")
+            return redirect('contact')  # Redirect back to the contact page
+        else:
+             messages.error(request, "There was an error with your submission. Please check the form for errors.")
+    else:
+        form = ContactForm()
+    
+    return render(request, 'app/contact.html', {'form': form, 'categories':categories})

@@ -23,6 +23,40 @@
         top: 100%; /* Position right below the parent link */
         left: 0;
       }
+      /* Message Container */
+      .messages {
+        margin-bottom: 20px;
+      }
+
+      /* Success Message */
+      .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      /* Error Message */
+      .alert-error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      /* Field-Specific Error Messages */
+      .text-danger {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
     </style>
   </head>
   <body>
@@ -144,42 +178,67 @@
               <div class="col-lg-9 cell-inner">
                 <div class="section-lg">
                   <h3 class="text-uppercase wow-outer"><span class="wow slideInDown">Contact Us</span></h3>
-                  <!-- RD Mailform-->
-                  <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                  {% if messages %}
+                    <div class="messages">
+                      {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                          {{ message }}
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  <!-- Django Contact Form -->
+                  <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
                     <div class="row row-10">
                       <div class="col-md-6 wow-outer">
                         <div class="form-wrap wow fadeSlideInUp">
-                          <label class="form-label-outside" for="contact-first-name">First Name</label>
-                          <input class="form-input" id="contact-first-name" type="text" name="name" data-constraints="@Required">
+                          <label class="form-label-outside" for="id_first_name">First Name</label>
+                          {{ form.first_name }}
+                          {% if form.first_name.errors %}
+                            <div class="text-danger">{{ form.first_name.errors.0 }}</div>
+                          {% endif %}
                         </div>
                       </div>
                       <div class="col-md-6 wow-outer">
                         <div class="form-wrap wow fadeSlideInUp">
-                          <label class="form-label-outside" for="contact-last-name">Last Name</label>
-                          <input class="form-input" id="contact-last-name" type="text" name="name" data-constraints="@Required">
+                          <label class="form-label-outside" for="id_last_name">Last Name</label>
+                          {{ form.last_name }}
+                          {% if form.last_name.errors %}
+                            <div class="text-danger">{{ form.last_name.errors.0 }}</div>
+                          {% endif %}
                         </div>
                       </div>
                       <div class="col-md-6 wow-outer">
                         <div class="form-wrap wow fadeSlideInUp">
-                          <label class="form-label-outside" for="contact-email">E-mail</label>
-                          <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
+                          <label class="form-label-outside" for="id_email">E-mail</label>
+                          {{ form.email }}
+                          {% if form.email.errors %}
+                            <div class="text-danger">{{ form.email.errors.0 }}</div>
+                          {% endif %}
                         </div>
                       </div>
                       <div class="col-md-6 wow-outer">
                         <div class="form-wrap wow fadeSlideInUp">
-                          <label class="form-label-outside" for="contact-phone">Phone</label>
-                          <input class="form-input" id="contact-phone" type="text" name="phone" data-constraints="@PhoneNumber">
+                          <label class="form-label-outside" for="id_phone">Phone</label>
+                          {{ form.phone }}
+                          {% if form.phone.errors %}
+                            <div class="text-danger">{{ form.phone.errors.0 }}</div>
+                          {% endif %}
                         </div>
                       </div>
                       <div class="col-12 wow-outer">
                         <div class="form-wrap wow fadeSlideInUp">
-                          <label class="form-label-outside" for="contact-message">Your Message</label>
-                          <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                          <label class="form-label-outside" for="id_message">Your Message</label>
+                          {{ form.message }}
+                          {% if form.message.errors %}
+                            <div class="text-danger">{{ form.message.errors.0 }}</div>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
                     <div class="group group-middle">
-                      <div class="wow-outer"> 
+                      <div class="wow-outer">
                         <button class="button button-primary button-winona wow slideInCenter" type="submit">Send Message</button>
                       </div>
                     </div>
