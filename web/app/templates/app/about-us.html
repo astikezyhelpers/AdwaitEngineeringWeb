@@ -79,9 +79,9 @@
                         <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="categories.html">Categories</a>
                         </li> -->
                         <li class="rd-nav-item dropdown">
-                          <a class="rd-nav-link dropdown-toggle" href="{% url 'category_list' %}" data-toggle="dropdown">Categories</a>
+                          <a class="rd-nav-link dropdown-toggle" href="{% url 'category_list' %}" data-toggle="dropdown">Products</a>
                           <ul class="dropdown-menu">
-                            {% for category in categories %}
+                            {% for category in categories reversed%}
                               <li><a class="dropdown-item" href="{% url 'product_list' category.id %}">{{ category.name }}</a></li>
                             {% endfor %}  
                           </ul>
@@ -114,26 +114,95 @@
           </div>
         </div>
       </section>
-      <!-- Working at CaseCraft-->
+      <!-- Who we are-->
       <section class="section novi-background section-lg">
         <div class="container">
-          <div class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
-            <div class="col-md-10 col-lg-6 col-xl-5">
-              <h3 class="text-uppercase">Who We Are</h3>
-              <p class="about-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostru eiusmod tempor incididunt ut labore et.</p>
+          <div class="row row-50 justify-content-center">
+            <div class="col-md-10 col-lg-10 col-xl-10">
+              <center><h3 class="text-uppercase">Who We Are</h3></center>
+              <p class="about-subtitle">Adwait Engineering is a distinguished provider of comprehensive Industrial Safety Equipment and Accessories (Safety & PPE), Electrical-Wire and Cables, Industrial Power Tools and Machinery, Office Stationery & Supplies, Material Handling Equipment, Spares, Aerial Work Platform, Packaging Material, Customized Solutions and Rental Services.</p>
+              <p>We are specializing in Material Handling Equipment and Consumables for B2B sectors. Established in 2024, we have solidified our position as a leader in optimizing industrial processes through innovative automation technologies.</p>
               <!-- <a class="button button-lg button-primary button-winona" href="about-us.html">View properties</a> -->
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-6"><img class="img-responsive" src="{% static 'images/logo-default-151x44.png' %}" alt="" width="570" height="388"/>
+            <!-- <div class="col-md-10 col-lg-6 col-xl-6"><img class="img-responsive" src="{% static 'images/logo-default-151x44.png' %}" alt="" width="570" height="388"/> -->
             </div>
           </div>
         </div>
       </section>
+      <!-- Mission Statement -->
+      <section class="section novi-background section-lg">
+        <div class="container">
+          <div class="row row-50 justify-content-center">
+            <div class="col-lg-10 col-xl-10">
+              <center><h4 class="text-uppercase">Mission Statement</h4></center>
+              <!-- Quote Light-->
+              <blockquote class="quote-light">
+                <svg class="quote-light-mark" x="0px" y="0px" width="35px" height="25px" viewbox="0 0 35 25">
+                  <path d="M27.461,10.206h7.5v15h-15v-15L25,0.127h7.5L27.461,10.206z M7.539,10.206h7.5v15h-15v-15L4.961,0.127h7.5                L7.539,10.206z"></path>
+                </svg>
+                <div class="quote-light-text">
+                  <p>Our mission at Adwait Engineering is to provide complete industrial solutions that enhance Material Handling and streamline the supply of consumables for our B2B partners, contributing to their operational efficiency and growth.</p>
+                </div>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+            <!-- Vision Statement -->
+            <section class="section novi-background section-lg">
+              <div class="container">
+                <div class="row row-50 justify-content-center">
+                  <div class="col-lg-10 col-xl-10">
+                    <center><h4 class="text-uppercase">Vision Statement</h4></center>
+                    <blockquote class="quote-light">
+                      <svg class="quote-light-mark" x="0px" y="0px" width="35px" height="25px" viewbox="0 0 35 25">
+                        <path d="M27.461,10.206h7.5v15h-15v-15L25,0.127h7.5L27.461,10.206z M7.539,10.206h7.5v15h-15v-15L4.961,0.127h7.5                L7.539,10.206z"></path>
+                      </svg>
+                      <div class="quote-light-text">
+                        <p>We envision becoming the preferred global partner for B2B industries seeking cutting-edge automation solutions for Material Handling and consumables, known for our commitment to quality, innovation, and customer-centric approach.</p>
+                      </div>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="section novi-background section-lg">
+              <div class="container">
+                <div class="row row-50 justify-content-center">
+                  <div class="col-lg-10 col-xl-10">
+                    <h4>Core Values</h4>
+                    <ul class="list-marked">
+                      <li><b>Excellence: </b> Striving for excellence in all aspects of our operations.</li>
+                      <li><b>Innovation: </b>Harnessing technological advancements to drive innovation.</li>
+                      <li><b>Integrity: </b>Upholding the highest ethical standards in our business practices.</li>
+                      <li><b>Customer Focus: </b>Understanding and exceeding customer expectations.</li>
+                      <li><b>Collaboration: </b>Fostering teamwork and partnerships for mutual success.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="section novi-background section-lg">
+              <div class="container">
+                <div class="row row-50 justify-content-center">
+                  <div class="col-lg-10 col-xl-10">
+                    <h4>Why Choose US?</h4>
+                    <ul class="list-marked">
+                      <li><b>Expertise: </b>Deep industry knowledge and technical expertise in MHE and consumables.</li>
+                      <li><b>Innovation: </b>Utilizing advanced technologies to deliver cutting-edge solutions.</li>
+                      <li><b>Customer Commitment: </b>Dedicated to delivering superior customer satisfaction.</li>
+                      <li><b>Quality Assurance: </b>Rigorous quality checks ensure reliability and performance.</li>
+                      <li><b>Flexibility: </b>Customized solutions that adapt to evolving business needs and challenges.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
       <!-- Advantages and Achievements-->
       <section class="section novi-background section-md text-center bg-gray-100">
         <div class="container">
-          <h3 class="text-uppercase wow-outer"><span class="wow slideInUp">Why people Choose Us</span></h3>
-          <p class="wow-outer"><span class="text-width-1 wow slideInDown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+          <h3 class="text-uppercase wow-outer"><span class="wow slideInUp">Our Journey So Far</span></h3>
+          <!-- <p class="wow-outer"><span class="text-width-1 wow slideInDown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p> -->
           <div class="row row-50">
             <div class="col-6 col-md-3 wow-outer">
               <!-- Counter Minimal-->
@@ -160,7 +229,7 @@
               <article class="counter-minimal wow slideInUp" data-wow-delay=".1s">
                 <div class="counter-minimal-icon box-chloe__icon novi-icon linearicons-star"></div>
                 <div class="counter-minimal-main">
-                  <div class="counter">19</div>
+                  <div class="counter">12</div>
                 </div>
                 <h5 class="counter-minimal-title">Years of Experience</h5>
               </article>
@@ -207,7 +276,7 @@
           <hr/>
         </div>
         <div class="footer-advanced-aside">
-          <div class="container">
+          <div class="container text-center">
             <!-- <div class="footer-advanced-layout"><a class="brand" href="index.html"><img src="images/logo-light-115x34.png" alt="" width="115" height="34" srcset="images/logo-light-115x34.png 2x"/></a> -->
               <!-- Rights-->
               <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Made with <i class="fa fa-heart pulse"></i> in <a href="#"></a>India.</p>

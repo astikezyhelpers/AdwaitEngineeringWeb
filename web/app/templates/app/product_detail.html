@@ -79,9 +79,9 @@
                         <!-- <li class="rd-nav-item"><a class="rd-nav-link" href="categories.html">Categories</a>
                         </li> -->
                         <li class="rd-nav-item dropdown">
-                          <a class="rd-nav-link dropdown-toggle" href="{% url 'category_list' %}" data-toggle="dropdown">Categories</a>
+                          <a class="rd-nav-link dropdown-toggle" href="{% url 'category_list' %}" data-toggle="dropdown">Products</a>
                           <ul class="dropdown-menu">
-                            {% for category in categories %}
+                            {% for category in categories reversed%}
                               <li><a class="dropdown-item" href="{% url 'product_list' category.id %}">{{ category.name }}</a></li>
                             {% endfor %}  
                           </ul>
@@ -175,7 +175,7 @@
           <hr/>
         </div>
         <div class="footer-advanced-aside">
-          <div class="container">
+          <div class="container text-center">
             <!-- <div class="footer-advanced-layout"><a class="brand" href="index.html"><img src="images/logo-light-115x34.png" alt="" width="115" height="34" srcset="images/logo-light-115x34.png 2x"/></a> -->
               <!-- Rights-->
               <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved. Made with <i class="fa fa-heart pulse"></i> in <a href="#"></a>India.</p>
